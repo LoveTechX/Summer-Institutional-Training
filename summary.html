@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attendance Summary</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #003366;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 0 auto;
+      width: 90%;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #003366;
+      color: white;
+    }
+
+    .present {
+      background-color: #c8e6c9;
+      color: green;
+    }
+
+    .absent {
+      background-color: #ffcdd2;
+      color: red;
+    }
+
+    .back-link {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007acc;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background-color: #005f99;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <h1>📋 Attendance Tracker</h1>
+  <table id="summaryTable">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Day</th>
+        <th>Period 1</th>
+        <th>Period 2</th>
+        <th>Period 3</th>
+        <th>Period 4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Attendance data will be inserted by JS -->
+    </tbody>
+  </table>
+  <br>
+  <a href="index.html" class="back-link">🔙 Back to Timetable</a>
+
+  <script>
+  const daysMap = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const tbody = document.querySelector("#summaryTable tbody");
+
+  const today = new Date();
+  const startDate = new Date();
+  startDate.setDate(today.getDate() - 6); // Show past 7 days
+
+  for (let d = 0; d < 7; d++) {
+    const date = new Date(startDate);
+    date.setDate(startDate.getDate() + d);
+
+    const dayIndex = date.getDay();
+    if (dayIndex === 0 || dayIndex === 6) continue; // Skip Sunday and Saturday
+
+    const dateStr = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    const dayName = daysMap[dayIndex];
+
+    const row = document.createElement("tr");
+
+    // Add Date and Day columns
+    const dateCell = document.createElement("td");
+    dateCell.textContent = date.toLocaleDateString("en-GB"); // dd/mm/yyyy
+    row.appendChild(dateCell);
+
+    const dayCell = document.createElement("td");
+    dayCell.textContent = dayName;
+    row.appendChild(dayCell);
+
+    // Check attendance for 4 periods
+    for (let p = 1; p <= 4; p++) {
+      const td = document.createElement("td");
+      const cellId = `attend-${dateStr}-${p}`;
+      const stored = localStorage.getItem(cellId);
+      if (stored === "1") {
+        td.textContent = "✔️ Present";
+        td.classList.add("present");
+      } else {
+        td.textContent = "❌ Absent";
+        td.classList.add("absent");
+      }
+      row.appendChild(td);
+    }
+
+    tbody.appendChild(row);
+  }
+</script>
+</body>
+</html>

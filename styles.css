@@ -1,0 +1,228 @@
+/* Global Reset & Compatibility Fixes */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  /* Ensure proper text selection across all browsers */
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+
+  /* Text wrap fallback for Safari < 17.4 */
+  word-break: break-word;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f5f5;
+  color: #333;
+  text-align: center;
+}
+
+/* Header styling */
+header {
+  text-align: center;
+  padding: 20px;
+  background-color: #003366;
+  color: white;
+}
+
+header img {
+  width: 80px;
+  height: auto;
+}
+
+/* Container for responsiveness */
+.table-container {
+  padding: 20px;
+  overflow-x: auto;
+}
+
+/* Table Styling */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: center;
+  vertical-align: top;
+}
+
+th {
+  background-color: #003366;
+  color: white;
+}
+
+/* Lab and Lecture colors */
+.lab {
+  background-color: #e6f7ff; /* Light Blue */
+}
+
+.lecture {
+  background-color: #fff9e6; /* Light Yellow */
+}
+
+/* Faculty / Room details */
+td span {
+  display: block;
+  font-size: 0.8em;
+  color: #555;
+  margin-top: 4px;
+}
+
+/* Hover effect */
+td:hover {
+  background-color: #f0f8ff;
+  transition: 0.3s ease;
+}
+
+/* Responsive Table - Mobile View */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead tr {
+    display: none;
+  }
+
+  td {
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-weight: bold;
+    color: #003366;
+  }
+}
+
+/* Scrollbar Styling for WebKit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+input#searchInput {
+  padding: 10px;
+  width: 50%;
+  max-width: 400px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.current-period {
+  background-color: #d1f7c4 !important;
+  border: 2px solid #3b9c3f;
+  font-weight: bold;
+  box-shadow: 0 0 8px #4CAF50;
+}
+
+.today-row {
+  background-color: #e6f7ff !important;
+  border-left: 5px solid #007acc;
+  font-weight: bold;
+}
+
+#todayBanner {
+  font-size: 18px;
+  margin-bottom: 15px;
+  padding: 10px 20px;
+  background-color: #003366;
+  color: white;
+  display: inline-block;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  border-radius: 12px; /* rounded edges */
+  overflow: hidden; /* prevents corner rounding overflow */
+}
+
+thead th:first-child {
+  border-top-left-radius: 12px;
+}
+
+thead th:last-child {
+  border-top-right-radius: 12px;
+}
+
+tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+
+tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+#todayBanner {
+  font-size: 18px;
+  margin-bottom: 15px;
+  padding: 10px 20px;
+  background-color: #003366;
+  color: white;
+  display: inline-block;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.marked {
+  background-color: #c8e6c9 !important;
+  border: 2px solid green;
+}
+
+td.locked {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.summary-link {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #007acc;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.summary-link:hover {
+  background-color: #005f99;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
