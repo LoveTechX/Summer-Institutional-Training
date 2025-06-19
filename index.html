@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Time Table</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon-192.png">
+<meta name="theme-color" content="#007bff">
+
+<!-- For PWA to run as standalone -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+<body>
+  <h1>3rd B – Summer Institutional Training</h1>
+
+  <!-- Today Banner -->
+  <div id="todayBanner"></div>
+
+  <!-- Search Input -->
+  <h2>Search Subject</h2>
+  <input type="text" id="searchInput" placeholder="Search for a subject..." onkeyup="filterTable()" />
+
+  <p>
+  <a href="summary.html" class="summary-link">📊 View Attendance Summary</a>
+</p>
+
+  <!-- Timetable -->
+  <table border="1" id="timetable">
+    <thead>
+      <tr>
+        <th>DAY</th>
+        <th>1<br>9:15 – 10:10</th>
+        <th>2<br>10:10 – 11:05</th>
+        <th>3<br>11:05 – 12:00</th>
+        <th>4<br>12:00 – 12:55</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Monday</td>
+        <td class="lecture html" title="Mr. Sachin - LH 504">HTML<br><span>Mr. Sachin<br>LH 504</span></td>
+        <td class="lecture oa" title="Mr. Kamaljit - LH 504">OA<br><span>Mr. Kamaljit<br>LH 504</span></td>
+        <td colspan="2" class="lab oa" title="Mr. Somdutt - Lab No. 513">OA LAB<br><span>Lab No. 513<br>Mr. Somdutt</span></td>
+      </tr>
+      <tr>
+        <td>Tuesday</td>
+        <td colspan="2" class="lab html" title="HTML LAB - Lab No. 614 - Mr. Sachin">HTML LAB<br><span>Lab No. 614<br>Mr. Sachin</span></td>
+        <td class="lecture python" title="Mr. Nazish - LH 504">Python<br><span>Mr. Nazish<br>LH 504</span></td>
+        <td class="lecture pl" title="Ms. Khushbu - LH 504">PL<br><span>Ms. Khushbu<br>LH 504</span></td>
+      </tr>
+      <tr>
+        <td>Wednesday</td>
+        <td class="lecture oa" title="Mr. Kamaljit - LH 504">OA<br><span>Mr. Kamaljit<br>LH 504</span></td>
+        <td class="lecture html" title="Mr. Sachin - LH 504">HTML<br><span>Mr. Sachin<br>LH 504</span></td>
+        <td colspan="2" class="lab pl" title="PL LAB - Lab No. 512 - Ms. Khushbu">PL LAB<br><span>Lab No. 512<br>Ms. Khushbu</span></td>
+      </tr>
+      <tr>
+        <td>Thursday</td>
+        <td class="lecture pl" title="Ms. Khushbu - LH 504">PL<br><span>Ms. Khushbu<br>LH 504</span></td>
+        <td class="lecture python" title="Mr. Nazish - LH 504">Python<br><span>Mr. Nazish<br>LH 504</span></td>
+        <td class="lecture oa" title="Mr. Kamaljit - LH 504">OA<br><span>Mr. Kamaljit<br>LH 504</span></td>
+        <td class="lecture html" title="Mr. Sachin - LH 504">HTML<br><span>Mr. Sachin<br>LH 504</span></td>
+      </tr>
+      <tr>
+        <td>Friday</td>
+        <td colspan="2" class="lab python" title="Python LAB - Lab No. 613 - Mr. Nazish">Python LAB<br><span>Lab No. 613<br>Mr. Nazish</span></td>
+        <td class="lecture python" title="Mr. Nazish - LH 504">Python<br><span>Mr. Nazish<br>LH 504</span></td>
+        <td class="lecture pl" title="Ms. Khushbu - LH 504">PL<br><span>Ms. Khushbu<br>LH 504</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>
